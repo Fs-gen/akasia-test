@@ -92,22 +92,26 @@ function App() {
           🎨
         </div>
       </div>
-
-      <div className='mt-3 mx-5 lg:mx-80 bg-indigo-200 text-center p-4 rounded'>
-        <div className='text-black text-xs'>*The letters are draggable
-        </div>
-        <div ref={targetElementRef}>
-          <div className='text-white flex justify-center items-center flex-wrap' style={{ fontSize: `${size}px`, height: '150px' }} >
-            {textItems.map((text, index) =>
-            (
-              <Draggable key={index}>
-                <div dangerouslySetInnerHTML={{ __html: text == ' ' ? '&nbsp;' : text }} className={`${color} mt-3 char`} style={{ cursor: 'move', fontWeight: 'bold' }} ref={(el) => (textRef.current[index] = el)} />
-              </Draggable>
-            )
-            )}
+      <div className='flex justify-center'>
+        <div className='mt-3 bg-indigo-200 text-center p-4 rounded' style={{ width: '900px' }}>
+          <div className='text-black text-xs'>*The letters are draggable
+          </div>
+          <div className='flex justify-center'>
+            <div className='html2canvas' ref={targetElementRef} >
+              <div className='text-white flex justify-center flex-wrap' style={{ fontSize: `${size}px`, height: '150px', width: '100%' }} >
+                {textItems.map((text, index) =>
+                (
+                  <Draggable key={index}>
+                    <div dangerouslySetInnerHTML={{ __html: text == ' ' ? '&nbsp;' : text }} className={`${color} mt-3 char`} style={{ cursor: 'move', fontWeight: 'bold' }} ref={(el) => (textRef.current[index] = el)} />
+                  </Draggable>
+                )
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
 
       <div className='flex justify-center mt-10'>
         <div className="relative w-72">
